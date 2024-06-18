@@ -1,0 +1,70 @@
+---
+import profile from "../assets/profile.png";
+import Status from "./Status.astro"
+---
+
+<section>
+  <header>
+    <div class="profileImage">
+    <Status/>
+      <img src={profile.src} alt="Profile" width={58} height={58}/>
+    </div>
+    <div>
+      <span class="name">Ivan Foster</span>
+      <span class="role">Developer and Designer</span>
+    </div>
+  </header>
+  <p class="about">
+    I am passionate developer and designer on a mission to redefine the digital
+    landscape. With a background in both design and development, I bring a
+    unique blend of creativity and technical expertise to every project.
+  </p>
+  <div class="socialLinks">
+    <a href="#" class="social">Github</a>
+    /
+    <a href="#" class="social">X</a>
+    /
+    <a href="#" class="social">Facebook</a>
+    /
+    <a href="#" class="social">Linkdin</a>
+  </div>
+</section>
+
+<style>
+  header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+  }
+  .profileImage {
+    border: 2px solid #d1d1d1;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1.5px 0 #d1d1d1;
+  }
+  .name,
+  .role {
+    display: block;
+    font-weight: 500;
+    font-size: 18px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  .role {
+    color: #6d6d6d;
+  }
+  .about {
+    margin-top: 32px;
+    color: #6d6d6d;
+  }
+  .socialLinks {
+    display: flex;
+    column-gap: 4px;
+    margin-top: 32px;
+    color: #c8c8c8;
+  }
+  .social {
+    color: #6d6d6d;
+    text-decoration: none;
+  }
+</style>

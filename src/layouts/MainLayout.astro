@@ -1,0 +1,97 @@
+---
+type Props = {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="bgLine"/>
+		<div class="bgLine"/>
+		<div class="bgLine"/>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	@font-face {
+		font-family: "Creato Display";
+		src: url("../../public/fonts/CreatoDisplay-Regular.otf");
+		font-weight: 400;
+	}
+	@font-face {
+		font-family: "Creato Display";
+		src: url("../../public/fonts/CreatoDisplay-Medium.otf");
+		font-weight: 500;
+	}
+	*,
+	*::before,
+	*::after {
+		margin: 0;
+		padding: 0;
+	}
+	html {
+		font-family: "Creato Display", sans-serif;
+		background: #fff;
+	}
+	body {
+		padding: 24px;
+	}
+	span, p {
+		line-height: 150%;
+	}
+	.bgLine {
+		position: absolute;
+		background-color: #e4e2e2;
+	}
+	.bgLine:nth-child(1), .bgLine:nth-child(2) {
+		width: 1px;
+		height: 100svh;
+	}
+	.bgLine:nth-child(1) {
+		top: 0;
+		left: 8px;
+	}
+	.bgLine:nth-child(2) {
+		top: 0;
+		right: 8px;
+	}
+	.bgLine:nth-child(3) {
+		height: 1px;
+		width: 100svw;
+		left: 0;
+		top: 8px;
+	}
+	/* code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	} */
+</style>
