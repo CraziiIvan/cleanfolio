@@ -1,70 +1,23 @@
 ---
-import profile from "../assets/profile.png";
-import Status from "./Status.astro"
+import { Icon } from "astro-icon/components";
 ---
 
-<section>
-  <header>
-    <div class="profileImage">
-    <Status/>
-      <img src={profile.src} alt="Profile" width={58} height={58}/>
-    </div>
-    <div>
-      <span class="name">Ivan Foster</span>
-      <span class="role">Developer and Designer</span>
-    </div>
-  </header>
-  <p class="about">
+<section class="mt-8">
+  <p class="text-zinc-600">
     I am passionate developer and designer on a mission to redefine the digital
     landscape. With a background in both design and development, I bring a
     unique blend of creativity and technical expertise to every project.
   </p>
-  <div class="socialLinks">
-    <a href="#" class="social">Github</a>
-    /
-    <a href="#" class="social">X</a>
-    /
-    <a href="#" class="social">Facebook</a>
-    /
-    <a href="#" class="social">Linkdin</a>
-  </div>
+  <!-- <div class="mt-8 flex space-x-4">
+    <a
+      href="#"
+      class="flex space-x-0.5 underline decoration-zinc-400 underline-offset-2 decoration-1 group hover:decoration-black duration-200"
+      ><span>Github</span><Icon class="mt-1.5 text-zinc-400 group-hover:text-black duration-200" name="move-up-right" size={16} /></a
+    >
+    <a
+      href="#"
+      class="flex space-x-0.5 underline decoration-zinc-400 underline-offset-2 decoration-1 group hover:decoration-black duration-200"
+      ><span>X</span><Icon class="mt-1.5 text-zinc-400 group-hover:text-black duration-200" name="move-up-right"  size={16}/></a
+    >
+  </div> -->
 </section>
-
-<style>
-  header {
-    position: relative;
-    display: flex;
-    align-items: center;
-    column-gap: 20px;
-  }
-  .profileImage {
-    border: 2px solid #d1d1d1;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 1.5px 0 #d1d1d1;
-  }
-  .name,
-  .role {
-    display: block;
-    font-weight: 500;
-    font-size: 18px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  }
-  .role {
-    color: #6d6d6d;
-  }
-  .about {
-    margin-top: 32px;
-    color: #6d6d6d;
-  }
-  .socialLinks {
-    display: flex;
-    column-gap: 4px;
-    margin-top: 32px;
-    color: #c8c8c8;
-  }
-  .social {
-    color: #6d6d6d;
-    text-decoration: none;
-  }
-</style>

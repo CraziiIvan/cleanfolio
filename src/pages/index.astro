@@ -1,14 +1,14 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import Header from "../components/Header.astro"
 import About from "../components/About.astro"
+import ContactBtn from "../components/ContactBtn.astro";
 ---
 
-<MainLayout title="Cleanfolio">
+<MainLayout title="Cleanfolio - Minimal portfolio template">
+	<Header/>
 	<main>
 		<About/>
+		<ContactBtn/>
 	</main>
 </MainLayout>
-
-<style>
-	
-</style>
