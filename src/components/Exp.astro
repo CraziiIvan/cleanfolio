@@ -1,0 +1,19 @@
+---
+type Props = {
+    role: string
+    company: string
+    year: number | string
+}
+
+const { role, company, year } = Astro.props
+---
+
+<div id="exp" class="py-2 transition-all duration-500 overflow-hidden">
+    <div class=" flex justify-between space-x-2">
+        <div class="text-black font-medium">
+            { role }
+            <span class="text-zinc-600 font-normal">@</span>{company}
+        </div>
+        <div class=" text-zinc-400">{year}</div>
+    </div>
+</div>

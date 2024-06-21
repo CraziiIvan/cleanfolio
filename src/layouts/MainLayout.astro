@@ -16,14 +16,17 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="font-primary mx-auto max-w-2xl mt-20 p-6 md:p-4">
+  <body class="font-primary mx-auto max-w-xl mt-20 p-6 md:p-4 antialiased">
     <slot />
-    <div class=" fixed w-full bg-gradient-to-b from-transparent h-24 left-0 to-white/25 backdrop-blur z-40 bottom-0"/>
+    <div class="mask fixed w-full h-36 left-0 backdrop-blur z-40 bottom-0"/>
   </body>
 </html>
 <style is:global>
   @font-face {
     font-family: "General Sans";
     src: url("/fonts/GeneralSans-Variable.woff2");
+  }
+  .mask {
+    mask: linear-gradient(transparent, white);
   }
 </style>
