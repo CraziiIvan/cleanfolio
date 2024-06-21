@@ -1,0 +1,57 @@
+---
+import { Icon } from "astro-icon/components";
+
+type project = {
+  name: string;
+  description: string;
+  path: string;
+  iconName: string;
+};
+
+const projects: project[] = [
+  {
+    name: "Cleanfolio",
+    description: "Minimal portfolio template",
+    path: "/",
+    iconName: "cleanfolio",
+  },
+  {
+    name: "Elevate",
+    description: "Ultimate tools library",
+    path: "/",
+    iconName: "elevate",
+  },
+];
+---
+
+<section class="mt-28">
+  <div class="flex justify-between items-center">
+    <h2 class="font-medium text-zinc-600">Project</h2>
+    <span
+      class="text-zinc-400 underline decoration-dashed cursor-pointer hover:text-black text-sm underline-offset-2 duration-150"
+      >See all</span
+    >
+  </div>
+  <div class="mt-4 flex flex-col divide-y divide-zinc-200">
+    {
+      projects.map((project) => (
+        <div class=" py-2 flex space-x-3 items-center cursor-pointer group">
+          <div class=" h-10 aspect-square rounded-lg border border-zinc-300 flex items-center justify-center">
+            <Icon name={project.iconName} />
+          </div>
+          <div>
+            <div class=" font-medium text-black flex group-hover:underline decoration-1 underline-offset-2 durantion-150">
+              {project.name}{" "}
+              <Icon
+                class="mt-1 ml-0.5 opacity-0 group-hover:opacity-100 duration-150"
+                name="move-up-right"
+                size={14}
+              />
+            </div>
+            <div class="  text-zinc-600">{project.description}</div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
