@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+
+type writing = {
+  title: string;
+  year: number;
+  month: string;
+};
+
+const writings: writing[] = [
+  { title: "Starter guide for Cleanfolio", year: 2024, month: "Jun" },
+  { title: "How to deal with markdown", year: 2024, month: "Jun" },
+];
+---
+
+<section class="mt-28">
+  <div class="flex justify-between items-center">
+    <h2 class="font-medium text-zinc-600">Writings</h2>
+    <span
+      class="text-zinc-400 underline decoration-dashed cursor-pointer hover:text-black text-sm underline-offset-2 duration-150"
+      >See all</span
+    >
+  </div>
+  <div class="mt-4 flex flex-col divide-y divide-zinc-200">
+    {
+      writings.map((writing) => (
+        <div class=" py-2 items-center cursor-pointer group">
+          <div class=" font-medium text-black flex group-hover:underline decoration-1 underline-offset-2 durantion-150">
+            {writing.title}
+            <Icon
+              class="mt-1 ml-0.5 opacity-0 group-hover:opacity-100 duration-150"
+              name="move-up-right"
+              size={14}
+            />
+          </div>
+          <div class=" text-zinc-600">
+            {writing.month} {writing.year}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+<section></section>
