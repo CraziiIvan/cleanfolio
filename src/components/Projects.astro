@@ -4,53 +4,57 @@ import { Icon } from "astro-icon/components";
 type project = {
   name: string;
   description: string;
-  path: string;
+  href: string;
   iconName: string;
+  year: number;
 };
 
 const projects: project[] = [
   {
     name: "Cleanfolio",
     description: "Minimal portfolio template",
-    path: "/",
+    href: "/projects/cleanfolio",
     iconName: "cleanfolio",
+    year: 2024,
   },
   {
     name: "Elevate",
     description: "Ultimate tools library",
-    path: "/",
+    href: "/projects/elevate",
     iconName: "elevate",
+    year: 2024,
   },
 ];
 ---
 
-<section class="mt-28">
+<section>
   <div class="flex justify-between items-center">
-    <h2 class="font-medium text-zinc-600">Project</h2>
-    <span
-      class="text-zinc-400 underline decoration-dashed cursor-pointer hover:text-black text-sm underline-offset-2 duration-150"
-      >See all</span
-    >
+    <h2 class="text-zinc-600">Projects</h2>
+    <a
+      href="/projects"
+      class="text-zinc-400 cursor-pointer hover:text-black duration-150 flex text-sm"
+      >See all
+      <Icon class="mt-1 ml-0.5" name="arrow-right" size={13} />
+    </a>
   </div>
-  <div class="mt-4 flex flex-col divide-y divide-zinc-200">
+  <div class="mt-4 flex flex-col">
     {
       projects.map((project) => (
-        <div class=" py-2 flex space-x-3 items-center cursor-pointer group">
-          <div class=" h-10 aspect-square rounded-lg border border-zinc-300 flex items-center justify-center">
-            <Icon name={project.iconName} />
-          </div>
-          <div>
-            <div class=" font-medium text-black flex group-hover:underline decoration-1 underline-offset-2 durantion-150">
-              {project.name}{" "}
+        <a href={project.href} class=" py-2 cursor-pointer group flex items-center ">
+          <div class=" flex mr-2">
+            <span class=" font-medium text-black flex group-hover:underline decoration-1 underline-offset-2 durantion-150">
+              {project.name}
               <Icon
                 class="mt-1 ml-0.5 opacity-0 group-hover:opacity-100 duration-150"
                 name="move-up-right"
                 size={14}
               />
-            </div>
-            <div class="  text-zinc-600">{project.description}</div>
+            </span>
+            <span class="text-zinc-600">{project.description}</span>
           </div>
-        </div>
+          <div class=" grow h-px bg-zinc-100" />
+          <div class=" pl-2 text-zinc-600">{project.year}</div>
+        </a>
       ))
     }
   </div>

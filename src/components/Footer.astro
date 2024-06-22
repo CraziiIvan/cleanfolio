@@ -1,4 +1,23 @@
-<footer class="mt-28 z-40 relative h-28 md:h-10 flex items-center justify-between flex-col md:flex-row">
-    <div class=" font-medium">Get in touch</div>
-    <div class=" text-zinc-400">© 2024 Cleanfolio</div>
+---
+import { Icon } from "astro-icon/components";
+
+import { socials } from "@siteData";
+---
+
+<footer>
+  <h2 class="text-zinc-600">Connect</h2>
+  <p class="text-zinc-600 mt-6">
+    Feel free to reach me out at <a
+      class="font-medium text-black underline cursor-pointer decoration-zinc-400 hover:decoration-black duration-150 decoration-1"
+      >luckyBn310@gmail.com</a
+    >.
+  </p>
+  <div class="flex justify-between mt-32">
+    <p class="text-zinc-600 ">
+      Theme:<button
+        class="underline ml-1 text-black decoration-dotted font-medium decoration-zinc-400 hover:decoration-black duration-150"
+        >system</button>
+    </p>
+    <span class="text-zinc-600">© 2024 Cleanfolio.</span>
+  </div>
 </footer>

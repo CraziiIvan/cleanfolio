@@ -1,0 +1,52 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Project from "../../components/Project.astro"
+import { Icon } from "astro-icon/components";
+
+type project = {
+  name: string;
+  description: string;
+  path: string;
+  iconName: string;
+};
+
+const projects: project[] = [
+  {
+    name: "Cleanfolio",
+    description: "Minimal portfolio template",
+    path: "/projects/cleanfolio",
+    iconName: "cleanfolio",
+  },
+  {
+    name: "Elevate",
+    description: "Ultimate tools library",
+    path: "/projects/elevate",
+    iconName: "elevate",
+  },
+];
+---
+
+<MainLayout title="Kaung Thant's projects">
+  <a
+    href="../"
+    class=" text-zinc-400 hover:text-black"
+    >
+    <Icon
+      class=" inline duration-150 "
+      name="undo-2"
+      size={14}
+    />
+    <span>Back</span>
+    </a
+  >
+  <div class=" mt-8">
+    <div class="font-medium text-zinc-600">Project</div>
+    <div class="mt-4 flex flex-col divide-y divide-zinc-200">
+        {
+          projects.map((project) => (
+            <Project name={project.name} description={project.description} iconName={project.iconName}/>
+          ))
+        }
+      </div>
+  </div>
+</MainLayout>

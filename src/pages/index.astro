@@ -1,22 +1,47 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import Header from "../components/Header.astro"
-import About from "../components/About.astro"
-import ContactBtn from "../components/ContactBtn.astro";
-import Experiences from "../components/Experiences.astro";
-import Projects from "../components/Projects.astro";
-import Writings from "../components/Writings.astro";
-import Footer from "../components/Footer.astro";
+import { Icon } from "astro-icon/components";
+
+import { socials } from "@siteData";
+
+import MainLayout from "@layouts/MainLayout.astro";
+import Header from "@components/Header.astro";
+import Experiences from "@components/Experiences.astro";
+import Projects from "@components/Projects.astro";
+import Writings from "@components/Writings.astro";
+import Footer from "@components/Footer.astro";
 ---
 
 <MainLayout title="Cleanfolio - Minimal portfolio template">
-	<Header/>
-	<main>
-		<About/>
-		<ContactBtn/>
-		<Experiences/>
-		<Projects/>
-		<Writings/>
-	</main>
-	<Footer/>
+  <Header />
+  <main class="mt-8 space-y-32">
+    <section>
+      <article class=" space-y-4">
+			I am passionate developer and designer on a mission to redefine the
+			<span class="font-serif italic">digital landscape</span>. With a background in both design and development, I
+			bring a unique blend of creativity and technical expertise to every
+			project.
+	  </article>
+      <div class="mt-8 flex space-x-4">
+        {
+          socials.map((social) => (
+            <a
+              href={social.href}
+              class="underline font-medium flex items-center decoration-zinc-400 decoration-1 group hover:decoration-black duration-150"
+            >
+              <span>{social.name}</span>
+              <Icon
+                class=" text-zinc-400 group-hover:text-black duration-150"
+                name="move-up-right"
+                size={12}
+              />
+            </a>
+          ))
+        }
+      </div>
+    </section>
+    <Projects />
+    <Experiences />
+    <Writings />
+  </main>
+  <Footer />
 </MainLayout>

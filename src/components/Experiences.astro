@@ -11,19 +11,20 @@ const exps: exp[] = [
 ];
 ---
 
-<section class="mt-28">
-  <h2 class="font-medium text-zinc-600">Experiences</h2>
-  <div class="mt-4 flex flex-col divide-y divide-zinc-200">
+<section>
+  <h2 class=" text-zinc-600">Experiences</h2>
+  <div class="mt-4">
     {
       exps.map((exp) => (
         <div class="py-2 transition-all duration-500 overflow-hidden">
-          <div class=" flex justify-between space-x-2">
+          <div class=" flex items-center space-x-2">
             <div class="text-black font-medium">
               {exp.role}
-              <span class="text-zinc-600 font-normal">@</span>
+              <span class="text-zinc-400">,</span>
               {exp.company}
             </div>
-            <div class=" text-zinc-400">{exp.year}</div>
+            <div class=" h-px bg-zinc-100 grow"/>
+            <div class=" text-zinc-600">{exp.year}</div>
           </div>
         </div>
       ))
