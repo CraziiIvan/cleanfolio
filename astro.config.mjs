@@ -8,5 +8,16 @@ export default defineConfig({
   integrations: [icon(), tailwind()],
   server: {
     host: true
+  },
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: "github-light",
+        dark: "github-dark",
+      }
+    }
+  },
+  devToolbar: {
+    enabled: false
   }
 });

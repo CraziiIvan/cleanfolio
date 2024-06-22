@@ -1,41 +1,8 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
-import { Icon } from "astro-icon/components";
-
-type project = {
-  name: string;
-  description: string;
-  path: string;
-  iconName: string;
-};
-
-const projects: project[] = [
-  {
-    name: "Cleanfolio",
-    description: "Minimal portfolio template",
-    path: "/projects/cleanfolio",
-    iconName: "cleanfolio",
-  },
-  {
-    name: "Elevate",
-    description: "Ultimate tools library",
-    path: "/projects/elevate",
-    iconName: "elevate",
-  },
-];
+import PageLayout from "@layouts/PageLayout.astro";
+import Projects from "@components/Projects.astro"
 ---
 
-<MainLayout title="Kaung Thant's projects">
-  <a
-    href="../"
-    class=" text-zinc-400 hover:text-black"
-    >
-    <Icon
-      class=" inline duration-150 "
-      name="undo-2"
-      size={14}
-    />
-    <span>Back</span>
-    </a
-  >
-</MainLayout>
+<PageLayout title="Kaung Thant's projects">
+  <Projects isPage={true}/>
+</PageLayout>

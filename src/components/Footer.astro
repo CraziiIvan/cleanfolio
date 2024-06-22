@@ -21,21 +21,20 @@
 <script>
   const themeToggle = document.querySelector("#themeToggle");
 
-  function applyTheme(theme: "light" | "dark"){
+  function applyTheme(theme: "light" | "dark") {
     document.documentElement.classList.toggle("dark", theme === "dark");
-    if (themeToggle) themeToggle.textContent = theme
-  };
+    if (themeToggle) themeToggle.textContent = theme;
+  }
 
   if (
     localStorage.theme === "dark" ||
     (!("theme" in localStorage) &&
       window.matchMedia("(prefers-color-scheme: dark)").matches)
   ) {
-    applyTheme("dark")
+    applyTheme("dark");
   } else {
-    applyTheme("light")
+    applyTheme("light");
   }
-
 
   themeToggle?.addEventListener("click", () => {
     const newTheme = themeToggle?.textContent === "light" ? "dark" : "light";

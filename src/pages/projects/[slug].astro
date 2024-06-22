@@ -1,0 +1,28 @@
+---
+import PageLayout from "@layouts/PageLayout.astro"
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("project");
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+type Props = {
+  post: CollectionEntry<"project">;
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<PageLayout title={post.data.title}>
+  <h1 class=" mt-12 font-semibold text-xl">{post.data.title}</h1>
+  <h2 class=" mt-1 text-zinc-600">{post.data.description}</h2>
+  <article class="prose prose-zinc prose-headings:font-semibold prose-pre:border prose-pre:border-zinc-200 mt-8 prose-img:border prose-img:rounded-lg prose-img:border-zinc-200">
+    <Content />
+  </article>
+</PageLayout>
