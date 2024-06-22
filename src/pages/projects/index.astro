@@ -1,6 +1,5 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
-import Project from "../../components/Project.astro"
 import { Icon } from "astro-icon/components";
 
 type project = {
@@ -39,14 +38,4 @@ const projects: project[] = [
     <span>Back</span>
     </a
   >
-  <div class=" mt-8">
-    <div class="font-medium text-zinc-600">Project</div>
-    <div class="mt-4 flex flex-col divide-y divide-zinc-200">
-        {
-          projects.map((project) => (
-            <Project name={project.name} description={project.description} iconName={project.iconName}/>
-          ))
-        }
-      </div>
-  </div>
 </MainLayout>

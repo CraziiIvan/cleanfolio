@@ -1,23 +1,45 @@
----
-import { Icon } from "astro-icon/components";
-
-import { socials } from "@siteData";
----
-
 <footer>
   <h2 class="text-zinc-600">Connect</h2>
-  <p class="text-zinc-600 mt-6">
+  <p class="mt-6">
     Feel free to reach me out at <a
-      class="font-medium text-black underline cursor-pointer decoration-zinc-400 hover:decoration-black duration-150 decoration-1"
+      class="font-medium underline cursor-pointer decoration-zinc-400 hover:decoration-black duration-150 decoration-1"
       >luckyBn310@gmail.com</a
     >.
   </p>
-  <div class="flex justify-between mt-32">
-    <p class="text-zinc-600 ">
+  <div class="flex justify-between mt-20">
+    <p class="text-zinc-600">
       Theme:<button
+        id="themeToggle"
         class="underline ml-1 text-black decoration-dotted font-medium decoration-zinc-400 hover:decoration-black duration-150"
-        >system</button>
+        >light</button
+      >
     </p>
     <span class="text-zinc-600">© 2024 Cleanfolio.</span>
   </div>
 </footer>
+
+<script>
+  const themeToggle = document.querySelector("#themeToggle");
+
+  function applyTheme(theme: "light" | "dark"){
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    if (themeToggle) themeToggle.textContent = theme
+  };
+
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    applyTheme("dark")
+  } else {
+    applyTheme("light")
+  }
+
+
+  themeToggle?.addEventListener("click", () => {
+    const newTheme = themeToggle?.textContent === "light" ? "dark" : "light";
+    localStorage.setItem("theme", newTheme);
+    applyTheme(newTheme);
+  });
+</script>
