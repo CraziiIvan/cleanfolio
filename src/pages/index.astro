@@ -1,47 +1,81 @@
 ---
-import { Icon } from "astro-icon/components";
+import { getCollection, type CollectionEntry } from "astro:content";
 
-import { socials } from "@siteData";
+import { Icon } from "astro-icon/components";
+import { socials } from "@lib/constants";
 
 import MainLayout from "@layouts/MainLayout.astro";
 import Header from "@components/Header.astro";
-import Experiences from "@components/Experiences.astro";
-import Projects from "@components/Projects.astro";
-import Writings from "@components/Writings.astro";
+import Project from "@components/Project.astro";
 import Footer from "@components/Footer.astro";
+
+const projects = await getCollection("project", ({ data }) => {
+  return data.select;
+});
 ---
 
 <MainLayout title="Cleanfolio - Minimal portfolio template">
   <Header />
   <main class="mt-8 space-y-32">
     <section>
-      <article class=" space-y-4">
-			I am passionate developer and designer on a mission to redefine the
-			<span class="font-serif italic">digital landscape</span>. With a background in both design and development, I
-			bring a unique blend of creativity and technical expertise to every
-			project.
-	  </article>
-      <div class="mt-8 flex space-x-4">
+      <article class="space-y-4">
+        I am passionate developer and designer on a mission to redefine the
+        <span class="font-serif italic">digital landscape</span>. With a
+        background in both design and development, I bring a unique blend of
+        creativity and technical expertise to every project.
+      </article>
+    </section>
+    <section>
+      <div class="flex justify-between items-center">
+        <h2 class:list="text-zinc-600">Projects</h2>
+        <a
+          href="/projects"
+          class="text-zinc-400 cursor-pointer hover:text-black duration-150 flex text-sm"
+        >
+          See all
+          <Icon class="mt-1 ml-0.5" name="arrow-right" size={13} />
+        </a>
+      </div>
+      <div class="mt-4 flex flex-col">
         {
-          socials.map((social) => (
-            <a
-              href={social.href}
-              class="underline font-medium flex items-center decoration-zinc-400 decoration-1 group hover:decoration-black duration-150"
-            >
-              <span>{social.name}</span>
-              <Icon
-                class=" text-zinc-400 group-hover:text-black duration-150"
-                name="move-up-right"
-                size={12}
-              />
-            </a>
+          projects.map(({ data }) => (
+            <Project
+              href={"./projects/" + data.title.toLocaleLowerCase()}
+              title={data.title}
+              description={data.description}
+            />
           ))
         }
       </div>
     </section>
-    <Projects isPage={false}/>
-    <Experiences />
-    <Writings />
+    <section>
+      <h2 class="text-zinc-600">Connect</h2>
+      <div class="mt-8 space-y-4">
+        <div class="mt-8 flex space-x-4">
+          {
+            socials.map((social) => (
+              <a
+                href={social.href}
+                class="underline font-medium flex items-center decoration-zinc-300 group hover:decoration-black duration-150"
+              >
+                <span>{social.name}</span>
+                <Icon
+                  class=" ml-0.5 text-zinc-400 group-hover:text-black duration-150"
+                  name="move-up-right"
+                  size={12}
+                />
+              </a>
+            ))
+          }
+        </div>
+        <p>
+          Feel free to reach me out at <a
+            class="font-medium underline cursor-pointer decoration-zinc-300 hover:decoration-black duration-150"
+            >luckyBn310@gmail.com</a
+          >.
+        </p>
+      </div>
+    </section>
   </main>
   <Footer />
 </MainLayout>
