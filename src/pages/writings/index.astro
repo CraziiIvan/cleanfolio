@@ -5,12 +5,12 @@ import { Icon } from "astro-icon/components"
 import { getSortedPosts } from "@lib/utils";
 import InfoLine from "@components/InfoLine.astro"
 
-const projects = await getCollection("project");
+const writings = await getCollection("writing");
 
-const sortedProjects = getSortedPosts(projects)
+const sortedWritings = getSortedPosts(writings)
 ---
 
-<MainLayout title="Projects" description="Products I build">
+<MainLayout title="Writings" description="To be good writer">
     <a href="/" class="text-zinc-400 hover:text-black z-40 absolute top-6">
         <Icon class="inline mb-0.5" name="undo-2" size={13} />
         <span>Back</span>
@@ -18,12 +18,12 @@ const sortedProjects = getSortedPosts(projects)
     <main class="grow">
         <div class="flex flex-col">
             {
-              sortedProjects.map((project) => (
+              sortedWritings.map(( writing ) => (
                 <InfoLine
-                  href={"./projects/" + project.slug}
-                  title={project.data.title}
-                  description={project.data.description}
-                  date={project.data.date}
+                  href={`./writings/${writing.slug}`}
+                  title={writing.data.title}
+                  description={writing.data.description}
+                  date={writing.data.date}
                 />
               ))
             }

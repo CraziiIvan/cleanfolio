@@ -6,23 +6,27 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import { extractYearAndMonth } from "@lib/utils"
 
 export async function getStaticPaths() {
-  const projects = await getCollection("project");
+  const writings = await getCollection("writing");
 
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: { project },
+  return writings.map((writing) => ({
+    params: { slug: writing.slug },
+    props: { writing },
   }));
 }
 
 type Props = {
-  project: CollectionEntry<"project">;
+  writing: CollectionEntry<"writing">;
 };
 
-const { project } = Astro.props;
-const { Content } = await project.render();
+const params = Astro.params
+
+console.log(params.slug)
+
+const { writing } = Astro.props;
+const { Content } = await writing.render();
 ---
 
-<MainLayout title={project.data.title} description={project.data.description}>
+<MainLayout title={writing.data.title} description={writing.data.description} date={extractYearAndMonth(writing.data.date)}>
   <a href="./" class="text-zinc-400 hover:text-black z-40 absolute top-6">
     <Icon class="inline mb-0.5" name="undo-2" size={13} />
     <span>Back</span>

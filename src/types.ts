@@ -1,10 +1,11 @@
 export type THeaderData = {
-    name: string
-    role: string
+    title: string
+    description: string
 }
 
 export type TSiteData = {
-    description: string[]
+    title: string
+    description: string
 }
 
 export type TSocial = {

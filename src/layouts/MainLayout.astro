@@ -1,35 +1,19 @@
 ---
+import Layout from "./Layout.astro"
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+
 type Props = {
   title: string;
+  description: string;
+  date?: string;
 };
 
-const { title } = Astro.props;
+const props = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body class="font-primary mx-auto max-w-2xl mt-20 p-6 antialiased">
-    <slot />
-    <div class="mask fixed w-full h-20 left-0 backdrop-blur-sm z-30 top-0 pointer-events-none"/>
-  </body>
-</html>
-<style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
-
-  @font-face {
-    font-family: "General Sans";
-    src: url("/fonts/GeneralSans-Variable.woff2");
-  }
-  .mask {
-    mask: linear-gradient(white, transparent);
-  }
-</style>
+<Layout title={props.title} description={props.description} >
+    <Header {...props}/>
+    <slot/>
+    <Footer/>
+</Layout>

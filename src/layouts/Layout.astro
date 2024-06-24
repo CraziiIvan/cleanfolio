@@ -1,0 +1,37 @@
+---
+import { siteData } from "@lib/constants"
+
+type Props = {
+  title: string;
+  description: string
+};
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="font-primary mx-auto max-w-2xl p-6 pt-28 antialiased flex flex-col min-h-svh">
+    <div class="mask fixed w-full h-20 left-0 backdrop-blur-sm z-30 top-0 pointer-events-none"/>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+  @font-face {
+    font-family: "General Sans";
+    src: url("/fonts/GeneralSans-Variable.woff2");
+  }
+  .mask {
+    mask: linear-gradient(white, transparent);
+  }
+</style>

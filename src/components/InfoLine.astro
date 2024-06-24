@@ -1,13 +1,15 @@
 ---
 import { Icon } from "astro-icon/components";
+import { extractYearAndMonth } from "@lib/utils"
 
 type Props = {
     title: string,
     description: string,
     href: string,
+    date: string,
 }
 
-const { title, description, href } = Astro.props
+const { title, description, href, date } = Astro.props
 ---
 
 <a
@@ -23,5 +25,5 @@ class=" py-2 cursor-pointer group flex items-center space-x-1 "
     />
   </div>
 <div class=" grow h-px bg-zinc-100" />
-<span class="text-zinc-600">{description}</span>
+<span class="text-zinc-600">{extractYearAndMonth(date)}</span>
 </a>

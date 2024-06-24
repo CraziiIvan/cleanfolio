@@ -1,8 +1,14 @@
 ---
-import { headerData } from "@lib/constants"
+type Props = {
+  title: string;
+  description: string;
+  date?: string
+};
+
+const { title, description, date } = Astro.props;
 ---
 
-<header>
-  <h1 class=" text-xl font-medium mt-4">{headerData.name}</h1>
-  <span class=" text-zinc-600">{headerData.role}</span>
+<header class="mb-8">
+  <h1 class=" text-xl font-medium">{title}</h1>
+  <span class=" text-zinc-600">{date ||description}</span>
 </header>

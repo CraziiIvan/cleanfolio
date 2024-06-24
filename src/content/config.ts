@@ -5,10 +5,20 @@ const project = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.string().date(),
-    select: z.boolean()
+    featured: z.boolean()
+  }),
+});
+
+const writing = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.string().date(),
+    featured: z.boolean()
   }),
 });
 
 export const collections = {
   project,
+  writing
 };
