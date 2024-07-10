@@ -1,4 +1,8 @@
 ---
+import { Image } from "astro:assets";
+
+const currentUrl = Astro.url.pathname;
+
 type Props = {
   title: string;
   description: string;
@@ -8,7 +12,10 @@ type Props = {
 const { title, description, date } = Astro.props;
 ---
 
-<header class="mb-8">
-  <h1 class=" text-xl font-medium">{title}</h1>
-  <span class=" text-zinc-600">{date ||description}</span>
+<header class="mb-8 flex items-center gap-x-4">
+  { currentUrl === "/" && <Image src="/profile.jpg" alt="Profile" width={48} height={48} class="rounded-full" />}
+  <div>
+    <h1 class=" text-xl font-medium">{title}</h1>
+    <span class=" text-neutral-600 dark:text-neutral-400">{date ||description}</span>
+  </div>
 </header>

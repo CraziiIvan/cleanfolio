@@ -5,8 +5,9 @@ import { Icon } from "astro-icon/components";
 import MainLayout from "@layouts/MainLayout.astro";
 import InfoLine from "@components/InfoLine.astro";
 
-import { socials } from "@lib/constants";
+import { experiences, socials } from "@lib/constants";
 import { getSortedPosts } from "@lib/utils";
+import InlineLink from "@components/InlineLink.astro";
 
 const projects = await getCollection("project", ({ data }) => {
   return data.featured;
@@ -22,33 +23,73 @@ const sortedWritings = getSortedPosts(writings);
 ---
 
 <MainLayout title="Kaung Thant" description="Frontend Engineer">
-  <main class="space-y-32">
+  <main class="space-y-28">
     <section>
-      <article>
-        I am passionate developer and designer on a mission to redefine the
-        digital landscape With a background in both design and development, I
-        bring a unique blend of creativity and technical expertise to every
-        project.
+      <article class="text-neutral-800 dark:text-neutral-300">
+        I am passionate <span
+          class="text-black dark:text-white font-medium"
+          >creative developer</span
+        > on a mission to redefine the
+        <span class="text-black dark:text-white font-medium"
+          >digital landscape</span
+        > With a background in both design and development, I bring a unique blend
+        of creativity and technical expertise to project. <InlineLink url="#"
+          >Hello</InlineLink
+        >
       </article>
+      <div class="mt-8 flex gap-x-4">
+        {
+          socials.map((social) => (
+            <a
+              href={social.href}
+              class="underline font-medium dark:font-normal flex items-center decoration-neutral-300 dark:decoration-neutral-700 group hover:decoration-black dark:hover:decoration-white duration-150"
+            >
+              <span>{social.name}</span>
+              <Icon
+                class=" ml-0.5 text-neutral-400 dark:text-neutral-600 group-hover:text-black dark:group-hover:text-white duration-150"
+                name="move-up-right"
+                size={12}
+              />
+            </a>
+          ))
+        }
+      </div>
     </section>
     <section>
-      <div class="flex justify-between items-center">
-        <h2 class:list="text-zinc-600">Projects</h2>
+      <h2 class="text-neutral-500">Experience</h2>
+      <div
+        class="mt-6 flex flex-col space-y-4 pl-4 border-l-2 border-neutral-200 dark:border-neutral-800"
+      >
+        {
+          experiences.map((exp) => (
+            <div>
+              <div class="text-neutral-600 dark:text-neutral-400">
+                {exp.from} - {exp.to}
+              </div>
+              <div class="font-medium">
+                {exp.role} <span class="font-normal">at</span> <InlineLink url={exp.companyUrl}>{exp.company}</InlineLink>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+    <section>
+      <div class="flex justify-between items-center text-neutral-500 text-base">
+        <h2>Projects</h2>
         <a
           href="/projects"
-          class="text-zinc-400 cursor-pointer hover:text-black duration-150 flex text-sm"
+          class="cursor-pointer hover:text-black dark:hover:text-white duration-150"
         >
-          See all
-          <Icon class="mt-1 ml-0.5" name="arrow-right" size={13} />
+          <Icon class="mt-1 ml-0.5" name="arrow-up-right" size={18} />
         </a>
       </div>
-      <div class="mt-4 flex flex-col">
+      <div class="mt-6">
         {
           sortedProjects.map((project) => (
             <InfoLine
               href={`./projects/${project.slug}`}
               title={project.data.title}
-              description={project.data.description}
               date={project.data.date}
             />
           ))
@@ -56,56 +97,34 @@ const sortedWritings = getSortedPosts(writings);
       </div>
     </section>
     <section>
-      <div class="flex justify-between items-center">
-        <h2 class:list="text-zinc-600">Writings</h2>
+      <div
+        class="mt-12 flex justify-between items-center text-neutral-500 text-base"
+      >
+        <h2>Writings</h2>
         <a
           href="/writings"
-          class="text-zinc-400 cursor-pointer hover:text-black duration-150 flex text-sm"
+          class="cursor-pointer hover:text-black dark:hover:text-white duration-150"
         >
-          See all
-          <Icon class="mt-1 ml-0.5" name="arrow-right" size={13} />
+          <Icon class="mt-1 ml-0.5" name="arrow-up-right" size={18} />
         </a>
       </div>
-      <div class="mt-4 flex flex-col">
+      <div class="mt-6">
         {
           sortedWritings.map((writing) => (
             <InfoLine
               href={`./writings/${writing.slug}`}
               title={writing.data.title}
-              description={writing.data.description}
               date={writing.data.date}
             />
           ))
         }
       </div>
     </section>
-    <section>
-      <h2 class="text-zinc-600">Connect</h2>
-      <div class="mt-8 space-y-4">
-        <div class="mt-8 flex space-x-4">
-          {
-            socials.map((social) => (
-              <a
-                href={social.href}
-                class="underline font-medium flex items-center decoration-zinc-300 group hover:decoration-black duration-150"
-              >
-                <span>{social.name}</span>
-                <Icon
-                  class=" ml-0.5 text-zinc-400 group-hover:text-black duration-150"
-                  name="move-up-right"
-                  size={12}
-                />
-              </a>
-            ))
-          }
-        </div>
-        <p>
-          Feel free to reach me out at <a
-            class="font-medium underline cursor-pointer decoration-zinc-300 hover:decoration-black duration-150"
-            >luckyBn310@gmail.com</a
-          >.
-        </p>
-      </div>
+    <section class="pb-8">
+      <h2 class="text-neutral-400 dark:text-neutral-500">Connect</h2>
+      <p class="mt-6 leading-7 dark:text-neutral-400">
+        Feel free to reach me out at <InlineLink url="mailto:kaungthant@gmail.com">luckyBn310@</InlineLink>
+      </p>
     </section>
   </main>
 </MainLayout>

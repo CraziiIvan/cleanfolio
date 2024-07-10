@@ -1,32 +1,35 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
-import { Icon } from "astro-icon/components"
+import { Icon } from "astro-icon/components";
 import { getSortedPosts } from "@lib/utils";
-import InfoLine from "@components/InfoLine.astro"
+import InfoLine from "@components/InfoLine.astro";
 
 const writings = await getCollection("writing");
 
-const sortedWritings = getSortedPosts(writings)
+const sortedWritings = getSortedPosts(writings);
 ---
 
 <MainLayout title="Writings" description="To be good writer">
-    <a href="/" class="text-zinc-400 hover:text-black z-40 absolute top-6">
-        <Icon class="inline mb-0.5" name="undo-2" size={13} />
-        <span>Back</span>
-    </a>
-    <main class="grow">
-        <div class="flex flex-col">
-            {
-              sortedWritings.map(( writing ) => (
-                <InfoLine
-                  href={`./writings/${writing.slug}`}
-                  title={writing.data.title}
-                  description={writing.data.description}
-                  date={writing.data.date}
-                />
-              ))
-            }
-          </div>
-    </main>
+  <a
+    href="/"
+    class="text-neutral-500 dark:hover:text-white hover:text-black z-40 absolute top-6"
+  >
+    <Icon class="inline mb-0.5" name="undo-2" size={13} />
+    <span>Back</span>
+  </a>
+  <main class="grow">
+    <div
+    >
+      {
+        sortedWritings.map((writing) => (
+          <InfoLine
+            href={`/writings/${writing.slug}`}
+            title={writing.data.title}
+            date={writing.data.date}
+          />
+        ))
+      }
+    </div>
+  </main>
 </MainLayout>

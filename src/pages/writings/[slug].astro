@@ -1,39 +1,62 @@
 ---
-import { Icon } from "astro-icon/components"
+import { Icon } from "astro-icon/components";
 
 import MainLayout from "@layouts/MainLayout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
-import { extractYearAndMonth } from "@lib/utils"
+import { extractYearAndMonth } from "@lib/utils";
 
 export async function getStaticPaths() {
   const writings = await getCollection("writing");
 
-  return writings.map((writing) => ({
+  return writings.map((writing, index) => ({
     params: { slug: writing.slug },
-    props: { writing },
+    props: { writing, next: writings[index + 1] || writings[0]   },
   }));
 }
 
 type Props = {
   writing: CollectionEntry<"writing">;
+  next: CollectionEntry<"writing">;
 };
 
-const params = Astro.params
+const params = Astro.params;
 
-console.log(params.slug)
-
-const { writing } = Astro.props;
+const { writing, next } = Astro.props;
 const { Content } = await writing.render();
 ---
 
-<MainLayout title={writing.data.title} description={writing.data.description} date={extractYearAndMonth(writing.data.date)}>
-  <a href="./" class="text-zinc-400 hover:text-black z-40 absolute top-6">
+<MainLayout
+  title={writing.data.title}
+  description={writing.data.description}
+  date={extractYearAndMonth(writing.data.date)}
+>
+  <a href="/writings" class="text-zinc-400 hover:text-black z-40 absolute top-6">
     <Icon class="inline mb-0.5" name="undo-2" size={13} />
     <span>Back</span>
-</a>
+  </a>
+  <div class="flex flex-wrap gap-2">
+    {
+      writing.data.categories.map((category, index) => (
+        <div
+        class="px-2 text-sm rounded-full bg-zinc-100 border border-zinc-200 cursor-pointer"
+        >
+          {category[0].toLocaleUpperCase() + category.slice(1).toLowerCase()}
+        </div>
+      ))
+    }
+  </div>
   <article
     class="prose prose-zinc prose-h4:text-lg prose-headings:font-medium prose-a:decoration-zinc-300 prose-a:hover:decoration-black prose-pre:border prose-pre:bg-zinc-100 prose-strong:font-medium prose-pre:border-zinc-200 prose-p:leading-6 prose-img:border prose-img:rounded-lg prose-img:border-zinc-200"
   >
     <Content />
   </article>
+  <div>
+    <a href={next.slug} class="flex flex-col items-end group">
+      <div class="text-zinc-400 group-hover:text-black">
+        Next
+        <Icon class="inline mb-0.5" name="arrow-right" size={13} />
+      </div>
+      <div class="font-medium group-hover:underline">{next.data.title}</div>
+    </a>
+  </div>
 </MainLayout>

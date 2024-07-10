@@ -1,4 +1,4 @@
-import type { TSiteData, TSocial } from "@types";
+import type { TExperience, TSiteData, TSocial } from "@types";
 
 export const siteData:TSiteData = {
     title: "Kaung Thant",
@@ -18,4 +18,21 @@ export const socials:TSocial[] = [
         name: "Facebook",
         href: "https://github.com/CraziiIvan/cleanfolio-dev"
     }
+]
+
+export const experiences: TExperience[] = [
+    {
+        from: 2022,
+        to: "Present",
+        role: "Frontend Engineer",
+        company: "Google",
+        companyUrl: "#",
+    },
+    {
+        from: 2021,
+        to: 2022,
+        role: "Junior Frontend Developer",
+        company: "Meta",
+        companyUrl: "#",
+    },
 ]

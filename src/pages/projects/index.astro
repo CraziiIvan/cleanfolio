@@ -11,18 +11,17 @@ const sortedProjects = getSortedPosts(projects)
 ---
 
 <MainLayout title="Projects" description="Products I build">
-    <a href="/" class="text-zinc-400 hover:text-black z-40 absolute top-6">
+    <a href="/" class="text-neutral-500 dark:hover:text-white hover:text-black z-40 absolute top-6">
         <Icon class="inline mb-0.5" name="undo-2" size={13} />
         <span>Back</span>
     </a>
     <main class="grow">
-        <div class="flex flex-col">
+        <div >
             {
               sortedProjects.map((project) => (
                 <InfoLine
-                  href={"./projects/" + project.slug}
+                  href={`/projects/${project.slug}`}
                   title={project.data.title}
-                  description={project.data.description}
                   date={project.data.date}
                 />
               ))
