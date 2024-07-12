@@ -23,51 +23,23 @@ const sortedWritings = getSortedPosts(writings);
 ---
 
 <MainLayout title="Kaung Thant" description="Frontend Engineer">
-  <main class="space-y-28">
-    <section>
-      <article class="text-neutral-800 dark:text-neutral-300">
-        I am passionate <span
-          class="text-black dark:text-white font-medium"
-          >creative developer</span
-        > on a mission to redefine the
-        <span class="text-black dark:text-white font-medium"
-          >digital landscape</span
-        > With a background in both design and development, I bring a unique blend
-        of creativity and technical expertise to project. <InlineLink url="#"
-          >Hello</InlineLink
-        >
-      </article>
-      <div class="mt-8 flex gap-x-4">
-        {
-          socials.map((social) => (
-            <a
-              href={social.href}
-              class="underline font-medium dark:font-normal flex items-center decoration-neutral-300 dark:decoration-neutral-700 group hover:decoration-black dark:hover:decoration-white duration-150"
-            >
-              <span>{social.name}</span>
-              <Icon
-                class=" ml-0.5 text-neutral-400 dark:text-neutral-600 group-hover:text-black dark:group-hover:text-white duration-150"
-                name="move-up-right"
-                size={12}
-              />
-            </a>
-          ))
-        }
-      </div>
+  <main class="space-y-16">
+    <section class="text-neutral-600 dark:text-neutral-400">
+      I am a self-taught <span class="text-black dark:text-white font-medium dark:font-normal">frontend engineer</span>. 
+I’m all about creating awesome interface and love diving into new tech stuff. 
     </section>
     <section>
-      <h2 class="text-neutral-500">Experience</h2>
       <div
-        class="mt-6 flex flex-col space-y-4 pl-4 border-l-2 border-neutral-200 dark:border-neutral-800"
+        class="flex flex-col gap-y-4 pl-4 border-l-2 border-neutral-200 dark:border-neutral-800"
       >
         {
           experiences.map((exp) => (
             <div>
-              <div class="text-neutral-600 dark:text-neutral-400">
+              <div class="text-neutral-500 text-sm">
                 {exp.from} - {exp.to}
               </div>
-              <div class="font-medium">
-                {exp.role} <span class="font-normal">at</span> <InlineLink url={exp.companyUrl}>{exp.company}</InlineLink>
+              <div class="font-medium dark:font-normal">
+                {exp.role} <span class="text-neutral-600 dark:text-neutral-400 font-normal">@</span> <InlineLink url={exp.companyUrl}>{exp.company}</InlineLink>
               </div>
             </div>
           ))
@@ -79,12 +51,12 @@ const sortedWritings = getSortedPosts(writings);
         <h2>Projects</h2>
         <a
           href="/projects"
-          class="cursor-pointer hover:text-black dark:hover:text-white duration-150"
+          class="cursor-pointer hover:text-black dark:hover:text-white duration-75"
         >
-          <Icon class="mt-1 ml-0.5" name="arrow-up-right" size={18} />
+          <Icon class="mt-1 ml-0.5" name="arrow-up-right" size={16} />
         </a>
       </div>
-      <div class="mt-6">
+      <div class="mt-2">
         {
           sortedProjects.map((project) => (
             <InfoLine
@@ -98,17 +70,17 @@ const sortedWritings = getSortedPosts(writings);
     </section>
     <section>
       <div
-        class="mt-12 flex justify-between items-center text-neutral-500 text-base"
+        class="flex justify-between items-center text-neutral-500 text-base"
       >
         <h2>Writings</h2>
         <a
           href="/writings"
-          class="cursor-pointer hover:text-black dark:hover:text-white duration-150"
+          class="cursor-pointer hover:text-black dark:hover:text-white duration-75"
         >
-          <Icon class="mt-1 ml-0.5" name="arrow-up-right" size={18} />
+          <Icon class="mt-1 ml-0.5" name="arrow-up-right" size={16} />
         </a>
       </div>
-      <div class="mt-6">
+      <div class="mt-2">
         {
           sortedWritings.map((writing) => (
             <InfoLine
@@ -121,10 +93,24 @@ const sortedWritings = getSortedPosts(writings);
       </div>
     </section>
     <section class="pb-8">
-      <h2 class="text-neutral-400 dark:text-neutral-500">Connect</h2>
-      <p class="mt-6 leading-7 dark:text-neutral-400">
-        Feel free to reach me out at <InlineLink url="mailto:kaungthant@gmail.com">luckyBn310@</InlineLink>
-      </p>
+      <h2 class="text-neutral-500">Connect</h2>
+      <div class="mt-4">
+        {
+          socials.map((social) => (
+            <a
+              href={social.href}
+              class="underline font-medium dark:font-normal mb-1 w-min flex items-center decoration-neutral-300 dark:decoration-neutral-700 group hover:decoration-black dark:hover:decoration-white duration-75"
+            >
+              <span>{social.name}</span>
+              <Icon
+                class=" ml-0.5 text-neutral-400 dark:text-neutral-600 group-hover:text-black dark:group-hover:text-white duration-75"
+                name="move-up-right"
+                size={12}
+              />
+            </a>
+          ))
+        }
+      </div>
     </section>
   </main>
 </MainLayout>

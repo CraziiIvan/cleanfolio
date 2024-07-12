@@ -11,7 +11,7 @@ export default defineConfig({
     tailwind(),
     mdx({
       syntaxHighlight: "shiki",
-      shikiConfig: { themes: { light: "github-light", dark: "github-dark" } },
+      shikiConfig: { themes: {light: "github-dark",dark: "github-dark"} },
     }),
   ],
   server: {

@@ -23,7 +23,7 @@ const { Content } = await project.render();
 ---
 
 <MainLayout title={project.data.title} description={project.data.description}>
-  <a href="/projects" class="text-zinc-400 hover:text-black z-40 absolute top-6">
+  <a href="/projects" class="text-zinc-400 hover:text-black dark:hover:text-white duration-75 z-40 absolute top-6">
     <Icon class="inline mb-0.5" name="undo-2" size={13} />
     <span>Back</span>
 </a>
@@ -51,7 +51,7 @@ const { Content } = await project.render();
         Next
         <Icon class="inline mb-0.5" name="arrow-right" size={13} />
       </div>
-      <div class="font-medium group-hover:underline">{next.data.title}</div>
+      <div class="font-medium dark:font-normal group-hover:underline">{next.data.title}</div>
     </a>
   </div>
 </MainLayout>

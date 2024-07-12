@@ -11,11 +11,15 @@ export const socials:TSocial[] = [
         href: "https://github.com/CraziiIvan/cleanfolio-dev"
     },
     {
-        name: "X",
+        name: "X(Twitter)",
         href: "https://github.com/CraziiIvan/cleanfolio-dev"
     },
     {
         name: "Facebook",
+        href: "https://github.com/CraziiIvan/cleanfolio-dev"
+    },
+    {
+        name: "luckyBn@",
         href: "https://github.com/CraziiIvan/cleanfolio-dev"
     }
 ]
