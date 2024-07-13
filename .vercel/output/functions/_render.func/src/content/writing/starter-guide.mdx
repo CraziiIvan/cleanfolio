@@ -1,0 +1,86 @@
+---
+title: Cleanfolio starter guide
+description: Minimal portfolio template
+date: "2024-06-01"
+featured: true
+categories: [ "guides", "starter", "cleanfolio" ]
+---
+
+This guide will help you get started with setting up and customizing the Cleanfolio template. Follow the steps below to install the necessary dependencies and understand the folder structure.
+
+### Table of Contents
+
+1. [Installation](#installation)
+2. [Folder Structure](#folder-structure)
+3. [Updating Content](#updating-content)
+4. [Deploying Your Portfolio](#deploying-your-portfolio)
+5. [Contact Information](#contact-information)
+
+### Installation
+
+To get started with Cleanfolio, clone the repository and install the necessary dependencies.
+
+```bash
+git clone https://github.com/CraziiIvan/cleanfolio.git
+cd cleanfolio
+npm install
+```
+
+### Folder Structure
+
+```
+cleanfolio/
+├── public/
+├── src/
+│ ├── assets/
+│ ├── icons/
+│ ├── content/
+│   ├── project/
+│   └── writing/
+│ ├── layouts/
+│ ├── pages/
+│ ├── components/
+│ ├── lib/
+│ ├── App.js
+│ └── types.ts
+├── .gitignore
+├── package.json
+└── README.md
+```
+
+- **src/**: Source code for components, pages, and styles.
+- **assets/**: Assets like images and fonts.
+- **layouts/**: Layout components.
+- **pages/**: Page components (Home, Projects, Writings).
+- **components/**: Reusable UI components.
+- **content/**: Markdown files for content.
+- **lib/**: Utility functions and constants.
+- **pages/index.astro**: Entry point for the application.
+
+### Updating Content
+
+If you don't want to customize further, you can just update the content in the following files.
+
+1. **Home Page**: Modify the content in `src/pages/index.astro` and `src/lib/constants.ts`.
+2. **Projects Page**: Manage your project posts in `src/content/project/`.
+3. **Writings Page**: Manage your blog posts in `src/content/writing/`.
+3. **Content Photos**: Manage your content photos in `src/assets/`.
+
+### Deploying Your Portfolio
+
+To deploy your portfolio, you can use services like Netlify, Vercel, or GitHub Pages. Here’s a quick guide for deploying with Vercel:
+
+1. **Build the project**:
+
+```bash
+npm run build
+```
+
+2. **Deploy**:
+   - Log in to [Netlify](https://vercel.com/).
+   - Create a new repository with Git.
+   - Connect your repository and deploy.
+
+### Contact Information
+
+For support or questions, please reach out via email at [luckybn310@gmail.com](mailto:luckybn310@gmail.com).
