@@ -5,7 +5,6 @@ Cleanfolio is a minimal, clean, and monochrome portfolio template designed to sh
 
 ## Features
 - Minimal and clean design
-- SEO-friendly
 - Performant and lightweight
 - Markdown Down Support (MDX)
 - Syntax highlightings
