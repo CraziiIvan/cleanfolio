@@ -17,6 +17,9 @@ export default defineConfig({
       }
     }
   }), sitemap()],
+  server: {
+    port: 3000
+  },
   devToolbar: {
     enabled: false
   },
