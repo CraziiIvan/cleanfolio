@@ -8,19 +8,19 @@ export const siteData:TSiteData = {
 export const socials:TSocial[] = [
     {
         name: "Github",
-        href: "https://github.com/CraziiIvan/cleanfolio-dev"
+        href: "https://github.com/CraziiIvan/cleanfolio"
     },
     {
         name: "X(Twitter)",
-        href: "https://github.com/CraziiIvan/cleanfolio-dev"
+        href: "https://github.com/CraziiIvan/cleanfolio"
     },
     {
         name: "Facebook",
-        href: "https://github.com/CraziiIvan/cleanfolio-dev"
+        href: "https://github.com/CraziiIvan/cleanfolio"
     },
     {
         name: "luckyBn@",
-        href: "https://github.com/CraziiIvan/cleanfolio-dev"
+        href: "https://github.com/CraziiIvan/cleanfolio"
     }
 ]
 

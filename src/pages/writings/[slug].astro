@@ -19,8 +19,6 @@ type Props = {
   next: CollectionEntry<"writing">;
 };
 
-const params = Astro.params;
-
 const { writing, next } = Astro.props;
 const { Content } = await writing.render();
 ---
