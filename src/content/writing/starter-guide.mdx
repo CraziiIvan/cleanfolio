@@ -6,17 +6,13 @@ featured: true
 categories: [ "guides", "starter", "cleanfolio" ]
 ---
 
-### Introduction
-
 This guide will help you get started with setting up and customizing the Cleanfolio template. Follow the steps below to install the necessary dependencies and understand the folder structure.
 
 ### Table of Contents
 
 1. [Installation](#installation)
 2. [Folder Structure](#folder-structure)
-3. [Customization](#customization)
-    - [Updating Content](#updating-content)
-    - [Changing Styles](#changing-styles)
+3. [Updating Content](#updating-content)
 4. [Deploying Your Portfolio](#deploying-your-portfolio)
 5. [Contact Information](#contact-information)
 
@@ -52,21 +48,23 @@ cleanfolio/
 └── README.md
 ```
 
-- **public/**: Static files like images and the main HTML file.
 - **src/**: Source code for components, pages, and styles.
+- **assets/**: Assets like images and fonts.
+- **layouts/**: Layout components.
+- **pages/**: Page components (Home, Projects, Writings).
 - **components/**: Reusable UI components.
-- **pages/**: Page components (Home, About, Portfolio, Blog, Contact).
-- **styles/**: CSS and styling files.
-- **App.js**: Main application component.
-- **index.js**: Entry point for the application.
+- **content/**: Markdown files for content.
+- **lib/**: Utility functions and constants.
+- **pages/index.astro**: Entry point for the application.
 
-### Updateing Content
+### Updating Content
 
-1. **Home Page**: Modify the content in `src/pages/Home.js`.
-2. **About Page**: Update your bio and skills in `src/pages/About.js`.
-3. **Portfolio Page**: Add your projects in `src/pages/Portfolio.js`.
-4. **Blog Page**: Manage your blog posts in `src/pages/Blog.js`.
-5. **Contact Page**: Update your contact information in `src/pages/Contact.js`.
+If you don't want to customize further, you can just update the content in the following files.
+
+1. **Home Page**: Modify the content in `src/pages/index.astro` and `src/lib/constants.ts`.
+2. **Projects Page**: Manage your project posts in `src/content/project/`.
+3. **Writings Page**: Manage your blog posts in `src/content/writing/`.
+3. **Content Photos**: Manage your content photos in `src/assets/`.
 
 ### Deploying Your Portfolio
 
@@ -85,4 +83,4 @@ npm run build
 
 ### Contact Information
 
-For support or questions, please reach out via email at [youremail@example.com](mailto:youremail@example.com).
+For support or questions, please reach out via email at [luckybn310@gmail.com](mailto:luckybn310@gmail.com).

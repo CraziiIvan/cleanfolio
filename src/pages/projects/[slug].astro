@@ -23,28 +23,16 @@ const { Content } = await project.render();
 ---
 
 <MainLayout title={project.data.title} description={project.data.description}>
-  <a href="/projects" class="text-zinc-400 hover:text-black dark:hover:text-white duration-75 z-40 absolute top-6">
+  <a href="/projects" class="dark:text-neutral-400 text-neutral-600 hover:text-black dark:hover:text-white duration-75 z-40 absolute top-6">
     <Icon class="inline mb-0.5" name="undo-2" size={13} />
     <span>Back</span>
 </a>
 
   <article
-    class="prose prose-neutral dark:prose-invert prose-h4:text-lg prose-headings:font-medium prose-a:decoration-neutral-300 prose-a:hover:decoration-black prose-pre:border prose-pre:bg-neutral-100 prose-strong:font-medium prose-pre:border-neutral-200 prose-p:leading-6 prose-img:border prose-img:rounded-lg prose-img:border-neutral-200"
+    class="prose prose-neutral dark:prose-invert prose-strong:font-medium prose-p:leading-6 prose-img:border prose-img:rounded-lg prose-img:border-neutral-200"
   >
     <Content />
   </article>
-  <div class="flex flex-wrap gap-2 mt-8">
-    {
-      project.data.categories.map((category) => (
-        <div
-        
-        class="px-1.5 text-sm rounded-full dark:text-neutral-200 bg-zinc-100 dark:bg-neutral-800 border border-zinc-200 dark:border-neutral-700 cursor-pointer"
-        >
-          {category[0].toLocaleUpperCase() + category.slice(1).toLowerCase()}
-        </div>
-      ))
-    }
-  </div>
   <div class="flex justify-end mt-12">
     <a href={next.slug} class="flex flex-col group items-end">
       <div class="text-neutral-500 dark:group-hover:text-white group-hover:text-black">

@@ -5,7 +5,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				"primary":  ["General Sans", "Inter", "sans-serif"],
+				"primary":  ["Inter", "sans-serif"],
 			}
 		},
 	},
