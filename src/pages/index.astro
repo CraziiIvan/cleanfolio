@@ -1,13 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 
-import { Icon } from "astro-icon/components";
-import MainLayout from "@layouts/MainLayout.astro";
-import InfoLine from "@components/InfoLine.astro";
+import Layout from "@layouts/Layout.astro";
 
-import { experiences, socials } from "@lib/constants";
 import { getSortedPosts } from "@lib/utils";
-import InlineLink from "@components/InlineLink.astro";
+import Link from "@components/Link.astro";
 
 const projects = await getCollection("project", ({ data }) => {
   return data.featured;
@@ -22,13 +19,61 @@ const writings = await getCollection("writing", ({ data }) => {
 const sortedWritings = getSortedPosts(writings);
 ---
 
-<MainLayout title="Kaung Thant" description="Frontend Engineer">
-  <main class="space-y-16">
-    <section class="text-neutral-600 dark:text-neutral-400">
-      I am a self-taught <span class="text-black dark:text-white font-medium dark:font-normal">frontend engineer</span>. 
-I’m all about creating digital products and love diving into new tech stuff. 
+<Layout title="Kaung Thant" description="Frontend Engineer">
+  <header>
+    <h1 class="text-[17px] font-medium">Kaung Thant</h1>
+  </header>
+  <main class="space-y-16 mt-6 grow">
+    <section>
+      <article class="space-y-6 text-gray11">
+        <p>
+          <span class="font-serif font-medium italic ">Frontend engineer</span> passionate about crafting digital products. I
+          focus on designing engaging and visually appealing user experiences.
+        </p>
+        <p>
+          Currently, I am working on personal projects and exploring innovative
+          ideas to enhance my skills and contribute to the community.
+        </p>
+      </article>
+      <!-- <div class=" flex gap-x-6 items-center mt-6">
+        <Link href="">Github</Link>
+        <Link href="">Twitter</Link>
+        <Link href="">CV</Link>
+      </div> -->
+    </section>
+    <section class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div class="space-y-4">
+        <div>
+          <Link href="/crafts" class="mb-2">Crafts</Link>
+          <p class="text-gray11">Implementing interfaces and interactions</p>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div>
+          <Link href="#" class="mb-2">Bookmarks</Link>
+          <p class="text-gray11">Curated resources across the web</p>
+        </div>
+      </div>
     </section>
     <section>
+      <div class="mb-6 text-gray8">Writings</div>
+      <div class="space-y-2">
+        <div class="flex gap-x-6 justify-between">
+          <Link href="">Modern auth solutions in Next.js</Link>
+          <div class="text-gray11 min-w-24 text-end text-sm leading-6">
+            Jun 30, 2024
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="mb-6 text-gray8">Connect</div>
+      <div>
+        Feel free to reach out to me on <Link href="">luckybn310@gmail.com</Link
+        >
+      </div>
+    </section>
+    <!-- <section>
       <div
         class="flex flex-col gap-y-4 pl-4 border-l-2 border-neutral-200 dark:border-neutral-800"
       >
@@ -111,6 +156,6 @@ I’m all about creating digital products and love diving into new tech stuff.
           ))
         }
       </div>
-    </section>
+    </section> -->
   </main>
-</MainLayout>
+</Layout>
