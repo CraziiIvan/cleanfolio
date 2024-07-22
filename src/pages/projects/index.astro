@@ -1,5 +1,5 @@
 ---
-import MainLayout from "@layouts/MainLayout.astro";
+import Layout from "@layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components"
 import { getSortedPosts } from "@lib/utils";
@@ -10,7 +10,7 @@ const projects = await getCollection("project");
 const sortedProjects = getSortedPosts(projects)
 ---
 
-<MainLayout title="Projects" description="Products I build">
+<Layout title="Projects" description="Products I build">
     <a href="/" class="dark:text-neutral-400 text-neutral-600 dark:hover:text-white hover:text-black z-40 absolute duration-75 top-6">
         <Icon class="inline mb-0.5" name="undo-2" size={13} />
         <span>Back</span>
@@ -28,4 +28,4 @@ const sortedProjects = getSortedPosts(projects)
             }
           </div>
     </main>
-</MainLayout>
+</Layout>
