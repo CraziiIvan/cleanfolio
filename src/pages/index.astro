@@ -5,6 +5,8 @@ import Layout from "@layouts/Layout.astro";
 
 import { getSortedPosts } from "@lib/utils";
 import Link from "@components/Link.astro";
+import { Image } from "astro:assets";
+import profile from "@assets/profile.jpg"
 
 const projects = await getCollection("project", ({ data }) => {
   return data.featured;
@@ -21,13 +23,14 @@ const sortedWritings = getSortedPosts(writings);
 
 <Layout title="Kaung Thant" description="Frontend Engineer">
   <header>
-    <h1 class="text-[17px] font-medium">Kaung Thant</h1>
+    <h1 class="font-semibold text-lg">Kaung Thant</h1>
+    <div class="text-gray9">Frontend Engineer</div>
   </header>
-  <main class="space-y-16 mt-6 grow">
+  <main class="space-y-24 mt-12 grow ">
     <section>
       <article class="space-y-6 text-gray11">
         <p>
-          <span class="font-serif font-medium italic ">Frontend engineer</span> passionate about crafting digital products. I
+          Passionate about crafting <span class="font-serif font-medium italic text-gray12">digital products</span>. I
           focus on designing engaging and visually appealing user experiences.
         </p>
         <p>
@@ -35,44 +38,80 @@ const sortedWritings = getSortedPosts(writings);
           ideas to enhance my skills and contribute to the community.
         </p>
       </article>
-      <!-- <div class=" flex gap-x-6 items-center mt-6">
-        <Link href="">Github</Link>
-        <Link href="">Twitter</Link>
-        <Link href="">CV</Link>
-      </div> -->
     </section>
-    <section class="grid grid-cols-1 gap-6 md:grid-cols-3">
-      <div class="space-y-4">
+    <section>
+      <!-- <div class="space-y-6">
+        <div class="text-gray8">Works</div>
+        <div>
+          <Link href="#" class="mb-2">Projects</Link>
+          <p class="text-gray11">Slected projects I have worked on</p>
+        </div>
+        <div>
+          <Link href="#" class="mb-2">Writings</Link>
+          <p class="text-gray11">Pieces of words and thoughts</p>
+        </div>
+      </div> -->
+      <!-- <div class="space-y-6">
+        <div class="text-gray8">Build</div>
         <div>
           <Link href="/crafts" class="mb-2">Crafts</Link>
-          <p class="text-gray11">Implementing interfaces and interactions</p>
+          <p class="text-gray11">Implementing interactions</p>
         </div>
-      </div>
-      <div class="space-y-4">
+      </div> -->
+      <!-- <div class="text-gray8">Library</div>
+      <div class="grid grid-cols-1 gap-x-10 gap-y-16 md:grid-cols-2 mt-6">
         <div>
           <Link href="#" class="mb-2">Bookmarks</Link>
           <p class="text-gray11">Curated resources across the web</p>
         </div>
-      </div>
+        <div>
+          <Link href="#" class="mb-2">Books</Link>
+          <p class="text-gray11">My tiny books collection </p>
+        </div>
+      </div> -->
+      <!-- <div class="space-y-6 md:col-span-2">
+        <div class="text-gray8">Playlists</div>
+        <div class=" grid grid-cols-3 md:grid-cols-5 gap-6">
+          <a class=" rounded-md overflow-hidden hover:opacity-90 duration-75 cursor-pointer">
+            <img src="https://i.scdn.co/image/ab67616d0000b2730ced8bad8b65037b20b685e2" alt="Midnight Rain" />
+          </a>
+        </div>
+      </div> -->
     </section>
     <section>
+      <div class="text-gray8">Projects</div>
+      <div class="mt-6 space-y-2">
+        <div class="flex items-center gap-x-4">
+          <div class="text-gray8">2024</div>
+          <div><Link href="">Nexus</Link></div>
+        </div>
+        <div class="flex items-center gap-x-4">
+          <div class="text-gray8">2023</div>
+          <div><Link href="">CodeFrame</Link></div>
+        </div>
+      </div>
+    </section>
+    <!-- <section>
+      <div class="space-y-6">
+        <div class=" text-gray8">Connect</div>
+        <div class="flex flex-col gap-y-2">
+          <Link href="">Email</Link>
+          <Link href="">Github</Link>
+          <Link href="">Twitter</Link>
+        </div>
+      </div>
+    </section> -->
+    <!-- <section>
       <div class="mb-6 text-gray8">Writings</div>
-      <div class="space-y-2">
-        <div class="flex gap-x-6 justify-between">
+      <div class=" divide-y divide-gray4">
+        <div class="flex gap-x-6 justify-between py-2">
           <Link href="">Modern auth solutions in Next.js</Link>
           <div class="text-gray11 min-w-24 text-end text-sm leading-6">
             Jun 30, 2024
           </div>
         </div>
       </div>
-    </section>
-    <section>
-      <div class="mb-6 text-gray8">Connect</div>
-      <div>
-        Feel free to reach out to me on <Link href="">luckybn310@gmail.com</Link
-        >
-      </div>
-    </section>
+    </section> -->
     <!-- <section>
       <div
         class="flex flex-col gap-y-4 pl-4 border-l-2 border-neutral-200 dark:border-neutral-800"

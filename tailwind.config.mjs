@@ -10,7 +10,7 @@ export default {
 				...gray,
 			},
 			fontFamily: {
-				sans: ["Inter", "Noto Sans Myanmar", "Newsreader", "sans-serif"],
+				sans: ["Inter", "Noto Sans Myanmar", "Geist Sans", "sans-serif"],
 				serif: ["Lora", "Newsreader", "Noto Serif Myanmar", "serif"],
 			},
 		},

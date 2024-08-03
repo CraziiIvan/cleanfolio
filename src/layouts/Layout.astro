@@ -21,9 +21,8 @@ const { title, description } = Astro.props;
     <title>{title || siteData.title}</title>
   </head>
   <body
-    class="mx-auto max-w-2xl px-5 pt-24 flex flex-col bg-gray1 text-gray12 min-h-[100dvh] font-sans"
+    class="mx-auto max-w-xl px-5 pt-12 flex flex-col bg-gray1 text-gray12 min-h-[100dvh] font-sans"
   >
-    <div class="fixed top-0 inset-x-0 h-12 blur-mask backdrop-blur z-40"></div>
     <slot />
     <Footer />
   </body>
@@ -58,10 +57,5 @@ const { title, description } = Astro.props;
     font-family: "Inter";
     src: url("/fonts/InterDisplay-Bold.woff2") format("woff2");
     font-weight: 700;
-  }
-
-  .blur-mask {
-    -webkit-mask-image: linear-gradient(white, transparent);
-    mask-image: linear-gradient(white, transparent);
   }
 </style>
