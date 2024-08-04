@@ -5,10 +5,21 @@
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "@*": ["src/*"],
+      "@*": [
+        "src/*"
+      ]
     },
-    "types": ["astro/client"]
+    "types": [
+      "astro/client"
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

@@ -1,0 +1,36 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout title="Crafts" description="Crafts">
+  <a
+    class="flex items-center gap-x-0.5 z-50 absolute duration-75 top-5 text-gray9 hover:text-gray12"
+    href="/"
+  >
+    <Icon name="undo-2" size={14} />
+    <div>Back</div>
+  </a>
+  <header>
+    <h1 class="text-[17px] font-medium">Crafts</h1>
+    <span class="text-gray9"
+      >Collections of interactions, interfaces and creative works I've done.</span
+    >
+  </header>
+  <main class="space-y-4 mt-12 grow">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:-mx-16">
+      <div>
+        <div
+          class="w-full aspect-video border border-gray4 rounded-xl outline outline-[3px] outline-gray1 hover:outline-gray3 duration-150 ease-out cursor-pointer"
+        >
+        </div>
+      </div>
+      <div>
+        <div
+          class="w-full aspect-video border border-gray4 rounded-xl outline outline-[3px] outline-gray1 hover:outline-gray3 duration-150 ease-out cursor-pointer"
+        >
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
