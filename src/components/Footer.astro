@@ -3,9 +3,12 @@ import Link from "@components/Link.astro";
 ---
 
 <footer class=" mt-24">
-  <div class="space-y-4 flex flex-col items-start">
-    <Link href="" class="text-gray9 hover:text-gray12 cursor-pointer text-sm duration-150 ease-out">Colophon</Link>
-    <div class="text-gray9 text-sm">© 2024 Kaung Thant.</div>
+  <div class=" flex flex-col justify-between gap-y-2">
+    <div class="text-gray9 text-[13px]">© 2024 Kaung Thant.</div>
+    <div class="flex gap-x-4 items-center">
+      <div class="text-[13px] text-gray9">Theme: <button id="themeToggle" class=" hover:text-gray12 cursor-pointer duration-150 ease-out underline decoration-dotted underline-offset-2 font-medium">Light</button></div>
+      <Link href="" class="text-gray9 hover:text-gray12 cursor-pointer text-[13px] duration-150 ease-out">Colophon</Link>
+    </div>
   </div>
   <div class=" text-gray8 text-sm font-serif italic mt-12 ">
     From complexity, we return to simplicity's beauty.</div>

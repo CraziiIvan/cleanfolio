@@ -8,12 +8,6 @@ import Link from "@components/Link.astro";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
-const projects = await getCollection("project", ({ data }) => {
-  return data.featured;
-});
-
-const sortedProjects = getSortedPosts(projects);
-
 const writings = await getCollection("writing", ({ data }) => {
   return data.featured;
 });
@@ -29,7 +23,9 @@ const sortedWritings = getSortedPosts(writings);
     <section>
       <article class="space-y-8 text-gray11">
         <p>
-          I'm a Frontend Engineer based in <Link href="" class="cursor-help">Myanmar(Burma)</Link>.
+          I'm a Frontend Engineer based in <Link href="" class="cursor-help"
+            >Myanmar(Burma)</Link
+          >.
         </p>
         <p>
           Passionate about crafting <span
@@ -161,71 +157,24 @@ const sortedWritings = getSortedPosts(writings);
     <section>
       <div class="space-y-6">
         <div class="font-medium">Connect</div>
-        <div class="flex flex-col gap-y-2">
-          <Link href=""
-            >X <Icon class="ml-0.5" name="move-up-right" size={12} /></Link
+        <div class="space-y-4">
+          <div class="flex gap-x-1 text-gray11">
+            Follow me on:
+            <Link href="">X </Link>,
+            <Link href="">Github </Link>.
+          </div>
+          <div class="flex gap-x-1 text-gray11">
+            Reach me out at: <Link href="">luckybn310@gmail.com</Link>
+          </div>
+          <div
+            class="text-gray9 font-normal text-sm flex gap-x-1 font-serif italic"
           >
-          <Link href=""
-            >Github <Icon class="ml-0.5" name="move-up-right" size={12} /></Link
-          >
-          <Link href=""
-            >Email <Icon class="ml-0.5" name="move-up-right" size={12} /></Link
-          >
-        </div>
-      </div>
-    </section>
-    <!-- <section>
-      <div class="mb-6 text-gray8">Writings</div>
-      <div class=" divide-y divide-gray4">
-        <div class="flex gap-x-6 justify-between py-2">
-          <Link href="">Modern auth solutions in Next.js</Link>
-          <div class="text-gray11 min-w-24 text-end text-sm leading-6">
-            Jun 30, 2024
+            Local:<div id="myanmar-time">00:00 AM</div>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
     <!-- <section>
-      <div
-        class="flex flex-col gap-y-4 pl-4 border-l-2 border-neutral-200 dark:border-neutral-800"
-      >
-        {
-          experiences.map((exp) => (
-            <div>
-              <div class="text-neutral-500 text-sm">
-                {exp.from} - {exp.to}
-              </div>
-              <div class="font-medium dark:font-normal">
-                {exp.role} <span class="text-neutral-600 dark:text-neutral-400 font-normal">@</span> <InlineLink url={exp.companyUrl}>{exp.company}</InlineLink>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </section>
-    <section>
-      <div class="flex justify-between items-center text-neutral-500 text-base">
-        <h2>Projects</h2>
-        <a
-          href="/projects"
-          class="cursor-pointer hover:text-black dark:hover:text-white duration-75 text-sm flex"
-        >See all
-          <Icon class=" mt-0.5 ml-0.5" name="arrow-up-right" size={16} />
-        </a>
-      </div>
-      <div class="mt-2">
-        {
-          sortedProjects.map((project) => (
-            <InfoLine
-              href={`./projects/${project.slug}`}
-              title={project.data.title}
-              date={project.data.date}
-            />
-          ))
-        }
-      </div>
-    </section>
-    <section>
       <div
         class="flex justify-between items-center text-neutral-500 text-base"
       >
@@ -248,26 +197,37 @@ const sortedWritings = getSortedPosts(writings);
           ))
         }
       </div>
-    </section>
-    <section class="pb-8">
-      <h2 class="text-neutral-500">Connect</h2>
-      <div class="mt-4">
-        {
-          socials.map((social) => (
-            <a
-              href={social.href}
-              class="underline font-medium dark:font-normal mb-1 w-min flex items-center decoration-neutral-300 dark:decoration-neutral-700 group hover:decoration-black dark:hover:decoration-white duration-75"
-            >
-              <span>{social.name}</span>
-              <Icon
-                class=" ml-0.5 text-neutral-400 dark:text-neutral-600 group-hover:text-black dark:group-hover:text-white duration-75"
-                name="move-up-right"
-                size={12}
-              />
-            </a>
-          ))
-        }
-      </div>
     </section> -->
   </main>
 </Layout>
+
+<script>
+  const padZero = (num: number) => (num < 10 ? `0${num}` : num);
+
+  const getMyanmarTime = () => {
+    const currentDate = new Date();
+    const utcOffset = currentDate.getTimezoneOffset();
+
+    const myanmarOffset = 390;
+    const myanmarTime = new Date(
+      currentDate.getTime() + (myanmarOffset + utcOffset) * 60000
+    );
+
+    let hours = myanmarTime.getHours();
+    const minutes = padZero(myanmarTime.getMinutes());
+
+    const ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    const paddedHours = padZero(hours);
+
+    return `${paddedHours}:${minutes} ${ampm}`;
+  };
+  const timeElement = document.getElementById("myanmar-time");
+
+  setInterval(() => {
+    if (timeElement) {
+      timeElement.textContent = getMyanmarTime();
+    }
+  }, 1000);
+</script>
