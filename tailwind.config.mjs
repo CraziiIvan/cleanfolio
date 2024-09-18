@@ -1,4 +1,4 @@
-import { gray } from '@radix-ui/colors'
+import { grayDark } from '@radix-ui/colors'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -7,12 +7,13 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				...gray,
+				...grayDark,
 			},
 			fontFamily: {
 				sans: ["Inter", "Noto Sans Myanmar", "Geist Sans", "sans-serif"],
 				serif: ["Lora", "Newsreader", "Noto Serif Myanmar", "serif"],
-			},
+				mono: ["Geist Mono", "monospace"],
+			}
 		},
 	},
 	plugins: [require("@tailwindcss/typography")],

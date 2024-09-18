@@ -8,6 +8,8 @@ type Props = {
 };
 
 const { title, description } = Astro.props;
+
+import "@styles/global.css";
 ---
 
 <!doctype html>
@@ -21,9 +23,9 @@ const { title, description } = Astro.props;
     <title>{title || siteData.title}</title>
   </head>
   <body
-    class="mx-auto max-w-xl px-5 py-24 bg-gray1 text-gray12 min-h-[100dvh] font-sans selection:bg-gray3 selection:text-gray12"
+    class="mx-auto max-w-2xl px-5 pt-48 pb-24 bg-gray1 text-gray12 min-h-[100dvh] font-sans selection:bg-gray3 selection:text-gray12"
   >
-  <div class=" fixed top-0 inset-x-0 h-24 backdrop-blur-xl mask pointer-events-none"/>
+  <!-- <div class=" fixed top-0 inset-x-0 h-24 backdrop-blur-xl mask pointer-events-none"/> -->
     <slot />
     <Footer />
   </body>
@@ -34,6 +36,11 @@ const { title, description } = Astro.props;
   @font-face {
     font-family: "Geist Sans";
     src: url("/fonts/GeistVF.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Geist Mono";
+    src: url("/fonts/GeistMonoVF.woff2") format("woff2");
   }
 
   @font-face {
@@ -64,5 +71,9 @@ const { title, description } = Astro.props;
     mask: linear-gradient(to bottom,white 12%, transparent);
   }
 
-
+.book {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transform: rotateY(-35deg) translateZ(px);
+}
 </style>
