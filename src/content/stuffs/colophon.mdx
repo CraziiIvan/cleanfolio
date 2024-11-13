@@ -1,0 +1,21 @@
+---
+title: Colophon
+description: How I built this site
+date: "2024-08-12"
+---
+import Link from "@components/Link.astro";
+import CodeBlock from "@components/CodeBlock.tsx";
+
+Although I have been a developer for a long time, I have never built a personal website completely.
+
+#### Inspiration
+
+#### Tech stack
+- Staticly generated with <Link href="https://astro.build/">Astro</Link>
+- Most of styling is done with <Link href="https://tailwindcss.com/">Tailwind CSS</Link> and a bit of plain CSS
+- Contents are written in <Link href="">MDX</Link>
+
+<CodeBlock language="javascript" codeString={`function fabonacci(n) {
+  if (n <= 1) return 1;
+  return fabonacci(n - 1) + fabonacci(n - 2);
+}`} showLineNumbers={true} />
