@@ -1,9 +1,10 @@
 # Cleanfolio
 Cleanfolio is a minimal, clean, and monochrome portfolio template designed to showcase your work elegantly. It is built with simplicity and flexibility in mind, making it easy to customize and deploy.
 
+![Cleanfolio](./src/assets/cleanfolio.png)
+
 ## Features
 - Minimal and clean design
-- SEO-friendly
 - Performant and lightweight
 - Markdown Down Support (MDX)
 - Syntax highlightings
