@@ -1,10 +1,8 @@
 <footer class=" mt-24">
-  <div class=" flex justify-between">
-    <div class="text-gray9 text-sm">© 2024 Kaung Thant.</div>
-    <div class="text-sm text-gray9">Theme: <button id="themeToggle" class=" hover:text-gray12 cursor-pointer duration-150 ease-out underline decoration-dotted underline-offset-2 font-medium">Light</button></div>
-  </div>
+  <div class="text-sm">Theme: <button id="themeToggle" class=" hover:text-sage-12 dark:hover:text-sageDark-12 cursor-pointer duration-150 ease-out underline decoration-dotted underline-offset-2 font-medium">Dark</button></div>
+    <div class="text-sage-11 dark:text-sageDark-11 text-sm mt-4">© 2024 Kaung Thant.</div>
   {Astro.url.pathname === '/' && (
-    <div class=" text-gray9 text-sm font-serif italic mt-12 ">
+    <div class=" text-sage-10 dark:text-sageDark-10 text-[15px] font-serif italic mt-12 ">
       From complexity, we return to simplicity's beauty.
     </div>
   )}
@@ -18,14 +16,13 @@
     if (themeToggle) themeToggle.textContent = theme;
   }
 
-  if (
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    applyTheme("dark");
-  } else {
+  // Check localStorage first
+  if (localStorage.theme === "light") {
     applyTheme("light");
+  } else {
+    // Default to dark theme if no preference is stored
+    applyTheme("dark");
+    localStorage.setItem("theme", "dark");
   }
 
   themeToggle?.addEventListener("click", () => {

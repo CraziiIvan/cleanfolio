@@ -23,9 +23,10 @@ import "@styles/global.css";
     <title>{title || siteData.title}</title>
   </head>
   <body
-    class="mx-auto max-w-2xl px-5 pt-48 pb-24 bg-sage1 dark:bg-sageDark-1 text-sage-11 dark:text-sageDark-11 min-h-[100dvh] font-sans selection:bg-sage-3 selection:text-sage-12"
+    class="mx-auto max-w-2xl px-5 pt-48 pb-24 bg-sage1 bg-sage-1 dark:bg-sageDark-1 text-sage-11 dark:text-sageDark-11 min-h-[100dvh] font-sans selection:bg-sage-3 selection:text-sage-12"
   >
-  <!-- <div class=" fixed top-0 inset-x-0 h-24 backdrop-blur-xl mask pointer-events-none"/> -->
+    <div class=" fixed top-0 inset-x-0 h-24 backdrop-blur maskTop pointer-events-none bg-gradient-to-b from-sage-1 dark:from-sageDark-1 from-5% to-transparent"/>
+    <div class=" fixed bottom-0 inset-x-0 h-24 backdrop-blur maskBottom pointer-events-none bg-gradient-to-t from-sage-1 dark:from-sageDark-1 from-5% to-transparent"/>
     <slot />
     <Footer />
   </body>
@@ -67,9 +68,13 @@ import "@styles/global.css";
     font-weight: 700;
   }
 
-  .mask {
-    mask: linear-gradient(to bottom,white 12%, transparent);
+  .maskTop {
+    mask: linear-gradient(to top, transparent, white 95%);
   }
+  .maskBottom {
+    mask: linear-gradient(transparent, white 95%);
+  }
+
 
 .book {
   perspective: 1000px;

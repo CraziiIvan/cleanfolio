@@ -32,7 +32,7 @@ export default {
 					7: sageDark.sage7,
 					8: sageDark.sage8,
 					9: sageDark.sage9,
-					10: sageDark.sage10,
+					10: sageDark.sage10,	
 					11: sageDark.sage11,
 					12: sageDark.sage12
 				}

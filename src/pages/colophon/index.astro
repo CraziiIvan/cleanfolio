@@ -1,31 +1,50 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-
 import { getEntry } from 'astro:content';
+import CodeBlock from "../../components/CodeBlock"; // Import the CodeBlock component
 
 const colophonPost = await getEntry('stuffs', "colophon");
-
 const { Content } = await colophonPost.render();
 ---
 
 <Layout title="Colophon" description="Colophon">
-    <a
-    class="flex items-center gap-x-0.5 z-50 absolute duration-150 ease-out top-8 text-gray9 hover:text-gray12"
+  <a
     href="/"
+    class="flex items-center gap-x-1 absolute top-8 text-sage-9 hover:text-sage-12 dark:text-sageDark-9 dark:hover:text-sageDark-12 duration-150 ease-out"
   >
     <Icon name="undo-2" size={14} />
     Back
   </a>
   <header>
-    <h1 class="text-xl font-medium">{colophonPost.data.title}</h1>
-    <p class="text-gray11 mt-2"
-      >
+    <h1 class="text-xl font-medium text-sage-12 dark:text-sageDark-12">
+      {colophonPost.data.title}
+    </h1>
+    <p class="text-sage-11 dark:text-sageDark-11">
       {colophonPost.data.description}
-      </p
-    >
+    </p>
   </header>
-  <main class="mt-12 text-gray11 markdown-content">
+  <main class="mt-12 prose dark:prose-invert max-w-none
+    prose-headings:text-sage-12 dark:prose-headings:text-sageDark-12 prose-headings:font-medium
+    prose-h1:text-2xl prose-h1:leading-tight
+    prose-h2:text-xl prose-h2:leading-tight 
+    prose-h3:text-lg prose-h3:leading-snug
+    prose-p:text-sage-11 dark:prose-p:text-sageDark-11 prose-p:leading-relaxed
+    prose-a:text-sage-12 dark:prose-a:text-sageDark-12 prose-a:underline prose-a:underline-offset-4 prose-a:decoration-sage-4 hover:prose-a:decoration-sage-8 dark:prose-a:decoration-sageDark-4 dark:hover:prose-a:decoration-sageDark-8
+    prose-strong:text-sage-12 dark:prose-strong:text-sageDark-12 prose-strong:font-medium
+    prose-em:text-sage-11 dark:prose-em:text-sageDark-11 prose-em:font-serif
+    prose-code:text-sage-12 dark:prose-code:text-sageDark-12 prose-code:bg-sage-3 dark:prose-code:bg-sageDark-3 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-mono prose-code:before:content-[''] prose-code:after:content-['']
+    prose-pre:bg-sage-2 dark:prose-pre:bg-sageDark-2 prose-pre:border prose-pre:border-sage-4 dark:prose-pre:border-sageDark-4 prose-pre:rounded-xl
+    prose-ul:list-disc prose-ul:pl-4 prose-ul:my-2
+    prose-ol:list-decimal prose-ol:pl-4 prose-ol:my-2
+    prose-li:text-sage-11 dark:prose-li:text-sageDark-11 prose-li:my-0.5
+    prose-blockquote:border-l-2 prose-blockquote:border-sage-6 dark:prose-blockquote:border-sageDark-6 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-sage-11 dark:prose-blockquote:text-sageDark-11
+    prose-hr:border-sage-4 dark:prose-hr:border-sageDark-4
+    prose-table:border-collapse prose-table:w-full
+    prose-th:border prose-th:border-sage-4 dark:prose-th:border-sageDark-4 prose-th:p-2 prose-th:bg-sage-2 dark:prose-th:bg-sageDark-2
+    prose-td:border prose-td:border-sage-4 dark:prose-td:border-sageDark-4 prose-td:p-2
+    prose-img:rounded-xl prose-img:border prose-img:border-sage-4 dark:prose-img:border-sageDark-4
+    ">
     <Content />
   </main>
 </Layout>

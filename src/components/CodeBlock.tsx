@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-// import { ghcolors } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import pkg from "react-copy-to-clipboard";
 import "../styles/code.css";
 
@@ -21,13 +20,13 @@ function CodeBlock({ language, codeString, showLineNumbers }: TCodeBlockProps) {
   };
 
   return (
-    <div className="border border-gray4 rounded-xl divide-y divide-gray4 overflow-hidden shadow-sm">
-      <div className="py-2 p-2.5 flex items-center justify-between bg-gray2">
-        <div className="text-xs text-gray9 font-light tracking-wider font-mono">
+    <div className="border border-sage-4 dark:border-sageDark-4 rounded-xl divide-y divide-sage-4 dark:divide-sageDark-4 overflow-hidden shadow-sm">
+      <div className="py-2 p-2.5 flex items-center justify-between bg-sage-2 dark:bg-sageDark-2">
+        <div className="text-xs text-sage-9 dark:text-sageDark-9 font-light tracking-wider font-mono">
           src/components/CodeBlock.tsx
         </div>
         <CopyToClipboard text={codeString} onCopy={handleCopy}>
-          <button className="text-gray10 ease-out duration-300 transition-colors hover:text-gray12">
+          <button className="text-sage-10 dark:text-sageDark-10 ease-out duration-150 hover:text-sage-12 dark:hover:text-sageDark-12">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="14"
@@ -48,7 +47,6 @@ function CodeBlock({ language, codeString, showLineNumbers }: TCodeBlockProps) {
       </div>
       <SyntaxHighlighter
         language={language}
-        // style={ghcolors}
         showLineNumbers={showLineNumbers}
         wrapLines={true}
         lineProps={{ style: { whiteSpace: "pre-wrap" } }}
@@ -56,9 +54,10 @@ function CodeBlock({ language, codeString, showLineNumbers }: TCodeBlockProps) {
           margin: "0",
           backgroundColor: "transparent",
           padding: "10px",
-          fontSize: "14px"
+          fontSize: "14px",
+          fontFamily: "Geist Mono"
         }}
-        className="code"
+        className="code bg-sage-2 dark:bg-sageDark-2"
       >
         {codeString}
       </SyntaxHighlighter>
