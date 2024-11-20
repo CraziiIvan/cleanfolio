@@ -4,7 +4,8 @@ description: How I built this site
 date: "2024-08-12"
 ---
 import Link from "@components/Link.astro";
-import CodeBlock from "@components/CodeBlock.tsx";
+// import CodeBlock from "@components/CodeBlock.tsx";
+import CodeBlock from "@components/CodeBlock.astro";
 
 Although I have been a developer for a long time, I have never built a personal website completely.
 
@@ -15,7 +16,36 @@ Although I have been a developer for a long time, I have never built a personal 
 - Most of styling is done with <Link href="https://tailwindcss.com/">Tailwind CSS</Link> and a bit of plain CSS
 - Contents are written in <Link href="">MDX</Link>
 
-<CodeBlock language="javascript" codeString={`function fabonacci(n) {
-  if (n <= 1) return 1;
-  return fabonacci(n - 1) + fabonacci(n - 2);
-}`} showLineNumbers={true} />
+<CodeBlock
+  snippet={`
+\`\`\`ts {4-5} showLineNumbers 
+import mdx from '@astrojs/mdx';
+import tailwind from '@astrojs/tailwind';
+import { defineConfig } from 'astro/config';
+import rehypePrettyCode from 'rehype-pretty-code';
+import moonlightTheme from './public/theme/moonlight-ii.json';
+import { transformerCopyButton } from '@rehype-pretty/transformers';
+
+export default defineConfig({
+  markdown: {
+    syntaxHighlight: false,
+    rehypePlugins: [
+      [
+        rehypePrettyCode,
+        {
+          theme: moonlightTheme,
+          transformers: [
+            transformerCopyButton({
+              visibility: 'hover',
+              feedbackDuration: 3500,
+            }),
+          ],
+        },
+      ],
+    ],
+  },
+  integrations: [mdx(), tailwind()],
+});
+\`\`\`
+`}
+/>

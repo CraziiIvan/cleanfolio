@@ -1,7 +1,11 @@
-import { useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { useState, useEffect } from "react";
 import pkg from "react-copy-to-clipboard";
-import "../styles/code.css";
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import rehypePrettyCode from 'rehype-pretty-code';
+import { transformerCopyButton } from '@rehype-pretty/transformers';
 
 const { CopyToClipboard } = pkg;
 
@@ -11,13 +15,33 @@ type TCodeBlockProps = {
   showLineNumbers?: boolean;
 };
 
-function CodeBlock({ language, codeString, showLineNumbers }: TCodeBlockProps) {
+export default function CodeBlock({ language, codeString, showLineNumbers }: TCodeBlockProps) {
   const [copied, setCopied] = useState(false);
+  const [highlightSnippet, setHighlightSnippet] = useState<string>("Loading...");
 
   const handleCopy = () => {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  useEffect(() => {
+    async function highlightCode() {
+      const file = await unified()
+        .use(remarkParse)
+        .use(remarkRehype)
+        .use(rehypePrettyCode, {
+          transformers: [transformerCopyButton({ feedbackDuration: 2000, visibility: 'hover' })],
+        })
+        .use(rehypeStringify)
+        .process(codeString);
+
+
+        console.log(String(file))
+      setHighlightSnippet(String(file));
+    }
+
+    highlightCode();
+  }, [codeString]);
 
   return (
     <div className="border border-sage-4 dark:border-sageDark-4 rounded-xl divide-y divide-sage-4 dark:divide-sageDark-4 overflow-hidden shadow-sm">
@@ -45,24 +69,7 @@ function CodeBlock({ language, codeString, showLineNumbers }: TCodeBlockProps) {
           </button>
         </CopyToClipboard>
       </div>
-      <SyntaxHighlighter
-        language={language}
-        showLineNumbers={showLineNumbers}
-        wrapLines={true}
-        lineProps={{ style: { whiteSpace: "pre-wrap" } }}
-        customStyle={{
-          margin: "0",
-          backgroundColor: "transparent",
-          padding: "10px",
-          fontSize: "14px",
-          fontFamily: "Geist Mono"
-        }}
-        className="code bg-sage-2 dark:bg-sageDark-2"
-      >
-        {codeString}
-      </SyntaxHighlighter>
+      <div dangerouslySetInnerHTML={{ __html: highlightSnippet }} />
     </div>
   );
 }
-
-export default CodeBlock;

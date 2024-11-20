@@ -1,0 +1,17 @@
+pre {
+  @apply bg-sage-1 dark:bg-sageDark-1 px-2 py-2
+}
+
+code {
+  @apply !text-sm !leading-relaxed;
+}
+
+code[data-line-numbers] {
+  counter-reset: line;
+}
+
+code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply inline-block w-6 mr-4 text-right dark:text-sageDark-7 text-sage-7;
+}

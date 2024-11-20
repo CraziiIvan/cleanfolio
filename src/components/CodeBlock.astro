@@ -1,0 +1,79 @@
+---
+import pkg from "react-copy-to-clipboard";
+const { CopyToClipboard } = pkg;
+
+// Props
+const { snippet } = Astro.props;
+---
+
+<div 
+  class="code-block border border-sage-3 dark:border-sageDark-3 rounded-xl divide-y divide-sage-3 dark:divide-sageDark-3 overflow-hidden shadow-sm">
+  <div class="header py-2 p-2.5 flex items-center justify-between bg-sage-2 dark:bg-sageDark-2">
+    <div class="path text-xs text-sage-10 dark:text-sageDark-10 tracking-wider font-mono">
+      src/components/CodeBlock.astro
+    </div>
+    <CopyToClipboard text={snippet}>
+      <button class="copy-btn text-sage-10 dark:text-sageDark-10 ease-out duration-150 hover:text-sage-12 dark:hover:text-sageDark-12">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-copy"
+        >
+          <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+        </svg>
+      </button>
+    </CopyToClipboard>
+  </div>
+  <div class="highlighted-code">
+    <astro-greet data-snippet={snippet}></astro-greet>
+  </div>
+</div>
+
+<script>
+  import { unified } from 'unified';
+  import remarkParse from 'remark-parse';
+  import remarkRehype from 'remark-rehype';
+  import rehypeStringify from 'rehype-stringify';
+  import rehypePrettyCode from 'rehype-pretty-code';
+  import { transformerCopyButton } from '@rehype-pretty/transformers';
+
+  class AstroGreet extends HTMLElement {
+    constructor() {
+      super();
+      this.init();
+    }
+
+    async init() {
+      const snippet = this.dataset.snippet || '';
+      const highlightedCode = await this.highlightCode(snippet);
+      this.innerHTML = highlightedCode;
+    }
+
+    async highlightCode(code: string) {
+      const file = await unified()
+        .use(remarkParse)
+        .use(remarkRehype)
+        .use(rehypePrettyCode, {
+          theme: "one-dark-pro",
+          keepBackground: false,
+          transformers: [
+          ],
+        })
+        .use(rehypeStringify)
+        .process(code);
+
+      return String(file);
+    }
+  }
+
+  customElements.define('astro-greet', AstroGreet);
+</script>
+
